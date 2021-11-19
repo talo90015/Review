@@ -21,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         binding.btnBMI.setOnClickListener {
             bmi()
         }
+        binding.btnHelp.setOnClickListener {
+            bmiHelpAlertDialog()
+        }
     }
     fun bmi(){
         val weight = binding.editWeight.text.toString().toFloat()
@@ -30,7 +33,14 @@ class MainActivity : AppCompatActivity() {
 
         AlertDialog.Builder(this)
             .setMessage(bmi.toString())
-            .setTitle("Reuslt")
+            .setTitle("BMI is : ")
+            .setPositiveButton("OK", null)
+            .show()
+    }
+    fun bmiHelpAlertDialog(){
+        AlertDialog.Builder(this)
+            .setTitle("公式")
+            .setMessage("體重(kg) / 身高的平方(m)")
             .setPositiveButton("OK", null)
             .show()
     }

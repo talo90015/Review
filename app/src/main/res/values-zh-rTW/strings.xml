@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BMI</string>
+    <string name="txt_weight">體重</string>
+    <string name="txt_height">身高</string>
+    <string name="txt_calculateBmi">BMI計算</string>
+    <string name="txt_help">幫助</string>
+</resources>
