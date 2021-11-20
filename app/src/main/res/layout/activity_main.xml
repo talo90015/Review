@@ -69,4 +69,17 @@
         app:layout_constraintStart_toStartOf="@+id/btnBMI"
         app:layout_constraintTop_toBottomOf="@+id/btnBMI" />
 
+    <TextView
+        android:id="@+id/txtBmi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text=""
+        android:background="#CDDC39"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBMI"
+        app:layout_constraintStart_toEndOf="@+id/btnBMI"
+        app:layout_constraintTop_toTopOf="@+id/btnBMI"
+        app:layout_constraintVertical_bias="0.551" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

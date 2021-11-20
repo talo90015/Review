@@ -5,4 +5,6 @@
     <string name="txt_height">身高</string>
     <string name="txt_calculateBmi">BMI計算</string>
     <string name="txt_help">幫助</string>
+    <string name="txt_guess">Guess</string>
+    <string name="txt_input1to10">輸入1~10數字</string>
 </resources>

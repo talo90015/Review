@@ -5,7 +5,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,19 +27,20 @@ class MainActivity : AppCompatActivity() {
             bmiHelpAlertDialog()
         }
     }
-    fun bmi(){
-        val weight = binding.editWeight.text.toString().toFloat()
-        val height = binding.editHeight.text.toString().toFloat()
-        val bmi = weight / (height * height)
-        Log.d("result", bmi.toString())
 
-        AlertDialog.Builder(this)
-            .setMessage(bmi.toString())
-            .setTitle("BMI is : ")
-            .setPositiveButton("OK", null)
-            .show()
+    fun bmi() {
+        val viewModel = ViewModelProvider(this)
+            .get(MainActivityViewModel::class.java)
+        viewModel.theBmi(
+            binding.editWeight.text.toString().toFloat(),
+            binding.editHeight.text.toString().toFloat()
+        )
+        viewModel.bmiResult.observe(this, {
+            binding.txtBmi.text = it.toString()
+        })
     }
-    fun bmiHelpAlertDialog(){
+
+    fun bmiHelpAlertDialog() {
         AlertDialog.Builder(this)
             .setTitle("公式")
             .setMessage("體重(kg) / 身高的平方(m)")
