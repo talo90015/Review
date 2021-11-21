@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -36,8 +37,19 @@ class MainActivity : AppCompatActivity() {
             binding.editHeight.text.toString().toFloat()
         )
         viewModel.bmiResult.observe(this, {
-            binding.txtBmi.text = it.toString()
+//            binding.txtBmi.text = it.toString()
+
+            val txtBmi = it.toString()
+
+            Intent(this, BmiResultActivity::class.java).apply {
+                val bag = Bundle()
+                bag.putString("BMI_EXTRA", txtBmi)
+                putExtras(bag)
+                startActivity(this)
+            }
+
         })
+
     }
 
     fun bmiHelpAlertDialog() {
