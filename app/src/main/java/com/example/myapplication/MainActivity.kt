@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
+    companion object {
+        const val loginValue = 1000
+    }
+
     private var login = false
     private lateinit var binding: ActivityMainBinding
 
@@ -19,10 +24,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.d("MainActivity ", "onCreate")
-
-        if (!login){
+        if (!login) {
             Intent(this, LoginActivity::class.java).apply {
-                startActivity(this)
+                startActivityForResult(this, loginValue)
             }
         }
 
@@ -36,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             bmiHelpAlertDialog()
         }
     }
+
 
     override fun onStart() {
         super.onStart()
@@ -65,6 +70,16 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.d("MainActivity ", "onDestroy")
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == loginValue) {
+            if (resultCode == Activity.RESULT_OK) {
+                val youAccount = data?.getStringExtra("Login_Account")
+                val youPassword = data?.getStringExtra("Login_Password")
+                Log.d("Result", "$youAccount / $youPassword")
+            }
+        }
     }
 
     fun bmi() {

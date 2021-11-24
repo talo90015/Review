@@ -1,8 +1,10 @@
 package com.example.myapplication
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -28,8 +30,11 @@ class LoginActivity : AppCompatActivity() {
     fun login(){
         val youAccount = binding.editAccount.text.toString()
         val youPassword = binding.editPassword.text.toString()
-        if (youAccount == "aa" && youPassword == "123"){
+        if (youAccount == "a" && youPassword == "123"){
             Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()
+            intent.putExtra("Login_Account", youAccount)
+            intent.putExtra("Login_Password", youPassword)
+            setResult(Activity.RESULT_OK, intent)
             finish()
         }else{
             AlertDialog.Builder(this)
