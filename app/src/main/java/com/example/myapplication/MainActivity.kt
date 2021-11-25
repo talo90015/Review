@@ -13,9 +13,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
-    companion object {
-        const val loginValue = 1000
-    }
+//    companion object {
+//        const val loginValue = 1000
+//    }
 
     private var login = false
     private lateinit var binding: ActivityMainBinding
@@ -24,11 +24,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.d("MainActivity ", "onCreate")
-        if (!login) {
-            Intent(this, LoginActivity::class.java).apply {
-                startActivityForResult(this, loginValue)
-            }
-        }
+//        if (!login) {
+//            Intent(this, LoginActivity::class.java).apply {
+//                startActivityForResult(this, loginValue)
+//            }
+//        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -71,16 +71,16 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         Log.d("MainActivity ", "onDestroy")
     }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == loginValue) {
-            if (resultCode == Activity.RESULT_OK) {
-                val youAccount = data?.getStringExtra("Login_Account")
-                val youPassword = data?.getStringExtra("Login_Password")
-                Log.d("Result", "$youAccount / $youPassword")
-            }
-        }
-    }
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (resultCode == loginValue) {
+//            if (resultCode == Activity.RESULT_OK) {
+//                val youAccount = data?.getStringExtra("Login_Account")
+//                val youPassword = data?.getStringExtra("Login_Password")
+//                Log.d("Result", "$youAccount / $youPassword")
+//            }
+//        }
+//    }
 
     fun bmi() {
         val viewModel = ViewModelProvider(this)
